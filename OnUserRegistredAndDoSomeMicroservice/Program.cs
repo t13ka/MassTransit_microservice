@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace OnUserRegistredMicroservice
+namespace OnUserRegistredAndDoSomeMicroservice
 {
     using MassTransitCore;
     using MassTransitCore.ConnectionProviders;

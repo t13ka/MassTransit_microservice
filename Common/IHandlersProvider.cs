@@ -1,4 +1,4 @@
-﻿namespace Common
+﻿namespace Abstractions
 {
     using System.Collections.Generic;
 

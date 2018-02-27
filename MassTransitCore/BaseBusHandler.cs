@@ -1,9 +1,9 @@
 ﻿namespace MassTransitCore
 {
-    using Common;
+    using Abstractions;
 
     public class BaseBusHandler : IBusHandler
     {
-        public string QueueName => $"{GetType().Name}_Queue";
+        public string QueueName => $"{GetType().Name}";
     }
 }

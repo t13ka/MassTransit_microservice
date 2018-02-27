@@ -6,9 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace microservices_rabbit.Controllers
 {
-    using Common;
-
-    using Contracts;
+    using Contracts.Events;
 
     using MassTransit;
 
@@ -17,7 +15,7 @@ namespace microservices_rabbit.Controllers
     {
         public SampleDataController(IBusControl bus)
         {
-            bus.Publish(new UserRegistredMessage(){Name = "test test"});
+            bus.Publish(new UserRegistredEvent { Name = "test test" });
         }
 
         private static string[] Summaries = new[]

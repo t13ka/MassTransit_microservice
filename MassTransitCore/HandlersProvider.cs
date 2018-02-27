@@ -1,9 +1,11 @@
-﻿namespace Common
+﻿namespace MassTransitCore
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
+
+    using Abstractions;
 
     public class HandlersProvider : IHandlersProvider
     {

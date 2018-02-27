@@ -1,4 +1,4 @@
-﻿namespace Common
+﻿namespace Abstractions
 {
     public interface IBusHandler
     {

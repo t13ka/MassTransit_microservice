@@ -1,10 +1,10 @@
-﻿namespace MassTransitCore
+﻿namespace MassTransitCore.ConnectionProviders
 {
-    using Common;
+    using Abstractions;
 
-    public class RabbitMqConnectionProvider : IRabbitMqConnectionProvider
+    public class ParticularConnectionProvider : IRabbitMqConnectionProvider
     {
-        public RabbitMqConnectionProvider(string uriString, string username, string password)
+        public ParticularConnectionProvider(string uriString, string username, string password)
         {
             UriString = uriString;
             Username = username;
