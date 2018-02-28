@@ -1,22 +1,23 @@
 ﻿namespace MassTransitCore
 {
     using System;
-    using System.Collections.Generic;
 
     using Abstractions;
 
     using MassTransit;
 
+    using MassTransitCore.ConnectionProviders;
+
     public class HandlersDirector : IHandlersDirector
     {
-        private readonly IEnumerable<IBusHandler> _handlers;
+        private readonly IHandlersProvider _handlersProvider;
 
         private readonly IRabbitMqConnectionProvider _provider;
 
-        public HandlersDirector(IRabbitMqConnectionProvider provider, IEnumerable<IBusHandler> handlers)
+        public HandlersDirector(IRabbitMqConnectionProvider provider, IHandlersProvider handlersProvider)
         {
             _provider = provider;
-            _handlers = handlers;
+            _handlersProvider = handlersProvider;
         }
 
         public void StartHandling()
@@ -32,7 +33,9 @@
                                     h.Password(_provider.Password);
                                 });
 
-                        foreach (var busHandler in _handlers)
+                        var handlers = _handlersProvider.GetBusHandlers();
+
+                        foreach (var busHandler in handlers)
                         {
                             sbc.ReceiveEndpoint(host, busHandler.QueueName, e => { e.Instance(busHandler); });
                         }

@@ -1,6 +1,8 @@
 ﻿namespace MassTransitCore.ConnectionProviders
 {
-    using Abstractions;
+    using System;
+
+    using NetCoreUtils;
 
     public class ParticularConnectionProvider : IRabbitMqConnectionProvider
     {
@@ -16,5 +18,10 @@
         public string Username { get; }
 
         public string Password { get; }
+
+        public Uri GetEndpoint(KnownServicesTypes serviceType)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

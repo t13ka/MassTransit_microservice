@@ -1,20 +1,35 @@
 ﻿namespace MassTransitCore.ConnectionProviders
 {
-    using Abstractions;
+    using System;
+
+    using Microsoft.Extensions.Configuration;
+
+    using NetCoreUtils;
 
     public class LocalConnectionProvider : IRabbitMqConnectionProvider
     {
+        private readonly IConfigurationRoot _configuration;
+
         public LocalConnectionProvider()
         {
-            UriString = "rabbitmq://localhost";
-            Username = "guest";
-            Password = "guest";
         }
 
-        public string UriString { get; }
+        public LocalConnectionProvider(IConfigurationRoot configurationRoot)
+        {
+            _configuration = configurationRoot;
+        }
 
-        public string Username { get; }
+        public string UriString => "rabbitmq://localhost";
 
-        public string Password { get; }
+        public string Username => "guest";
+
+        public string Password => "guest";
+
+        public Uri GetEndpoint(KnownServicesTypes serviceType)
+        {
+            var service = _configuration[serviceType.ToString()];
+
+            return new Uri($"{UriString}{service}");
+        }
     }
 }

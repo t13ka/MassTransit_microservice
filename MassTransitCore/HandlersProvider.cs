@@ -11,7 +11,7 @@
     {
         public IEnumerable<IBusHandler> GetBusHandlers()
         {
-            var currentDomain = Assembly.GetCallingAssembly();
+            var currentDomain = Assembly.GetEntryAssembly();
             var type = typeof(IBusHandler);
             var types = currentDomain
                 .GetTypes()

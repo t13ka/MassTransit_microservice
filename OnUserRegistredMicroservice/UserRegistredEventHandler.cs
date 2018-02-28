@@ -1,6 +1,5 @@
 ﻿namespace OnUserRegistredMicroservice
 {
-    using System;
     using System.Threading.Tasks;
 
     using Abstractions.Messages.Event;
@@ -10,6 +9,8 @@
     using MassTransit;
 
     using MassTransitCore;
+
+    using NetCoreUtils;
 
     public class UserRegistredEventHandler : BaseBusHandler, IConsumer<IUserRegistredEvent>
     {
@@ -21,7 +22,9 @@
                                    Emails = "test@test.ru; test2@test.ru"
                                };
 
-            var sendEndpoint = await context.GetSendEndpoint(new Uri("rabbitmq://localhost/SendEmailsCommandHandler"));
+            var endpoint = Program.ConnectionProvider.GetEndpoint(KnownServicesTypes.SendEmailsCommandHandler);
+
+            var sendEndpoint = await context.GetSendEndpoint(endpoint);
 
             await sendEndpoint.Send(contract);
         }

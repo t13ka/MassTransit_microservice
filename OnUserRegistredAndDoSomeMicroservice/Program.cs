@@ -2,6 +2,8 @@
 
 namespace OnUserRegistredAndDoSomeMicroservice
 {
+    using System.IO;
+
     using MassTransitCore;
     using MassTransitCore.ConnectionProviders;
 
@@ -9,9 +11,7 @@ namespace OnUserRegistredAndDoSomeMicroservice
     {
         static void Main(string[] args)
         {
-            var handlersProvider = new HandlersProvider();
-            var busHandlers = handlersProvider.GetBusHandlers();
-            var handlersDirector = new HandlersDirector(new LocalConnectionProvider(), busHandlers);
+            var handlersDirector = new HandlersDirector(new LocalConnectionProvider(), new HandlersProvider());
 
             handlersDirector.StartHandling();
 
