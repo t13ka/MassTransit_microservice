@@ -1,0 +1,8 @@
+﻿-- redis
+docker run --name mcRedis -d -p 6379:6379 redis
+
+-- mcElasticSearch
+docker run --name mcElasticSearch -d -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:6.0.0
+
+-- kibana
+docker run --name mcKibana --link mcElasticSearch:elasticsearch -p 5601:5601 -d docker.elastic.co/kibana/kibana:6.0.0
