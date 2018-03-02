@@ -1,4 +1,4 @@
-﻿namespace Core.ConnectionProviders.Redis
+﻿namespace Environment.ConnectionProviders.Redis
 {
     public class LocalRedisConnectionProvider : IRedisConnectionProvider
     {

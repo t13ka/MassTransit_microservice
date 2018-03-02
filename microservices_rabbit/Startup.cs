@@ -1,9 +1,16 @@
 namespace Web
 {
     using System;
+    using System.IO;
+
+    using Abstractions.Messages.Command;
+    using Abstractions.Messages.Command.Responses;
 
     using Autofac;
     using Autofac.Extensions.DependencyInjection;
+
+    using Environment;
+    using Environment.ConnectionProviders.Rabbit;
 
     using MassTransit;
     using MassTransit.Util;
@@ -31,28 +38,35 @@ namespace Web
         {
             services.AddMvc();
 
-            var builder = new ContainerBuilder();
-            builder.Register(
-                    c =>
+            var configurationRoot = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json")
+                .Build();
+            var connectionProvider = new LocalConnectionProvider(configurationRoot);
+            var bus = Bus.Factory.CreateUsingRabbitMq(
+                sbc => sbc.Host(
+                    new Uri(connectionProvider.UriString),
+                    h =>
                         {
-                            return Bus.Factory.CreateUsingRabbitMq(
-                                sbc => sbc.Host(
-                                    new Uri("rabbitmq://localhost"),
-                                    //"dev",
-                                    h =>
-                                        {
-                                            h.Username("guest");
-                                            h.Password("guest");
-                                        }));
-                        })
-                .As<IBusControl>()
-                .As<IPublishEndpoint>()
+                            h.Username(connectionProvider.Username);
+                            h.Password(connectionProvider.Password);
+                        }));
+
+            var builder = new ContainerBuilder();
+            builder.Register(c => bus).As<IBusControl>().As<IPublishEndpoint>().SingleInstance();
+
+            // clients for external microservices
+            builder
+                .Register(
+                    c => new MessageRequestClient<IGetSomeDataCommand, IGetSomeDataCommandResponse>(
+                        bus,
+                        connectionProvider.GetEndpoint(KnownServicesTypes.GetSomeDataCommandHandler),
+                        TimeSpan.FromSeconds(10)))
+                .As<IRequestClient<IGetSomeDataCommand, IGetSomeDataCommandResponse>>()
                 .SingleInstance();
 
             builder.Populate(services);
             _container = builder.Build();
 
-            // Create the IServiceProvider based on the container.
             return new AutofacServiceProvider(_container);
         }
 
@@ -87,7 +101,7 @@ namespace Web
 
             // resolve the bus from the container
             var bus = _container.Resolve<IBusControl>();
-            
+
             // start the bus
             var busHandle = TaskUtil.Await(() => bus.StartAsync());
 

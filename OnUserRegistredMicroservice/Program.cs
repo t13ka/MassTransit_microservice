@@ -4,9 +4,10 @@
     using System.IO;
 
     using Core;
-    using Core.ConnectionProviders;
-    using Core.ConnectionProviders.Rabbit;
-    using Core.ConnectionProviders.Redis;
+
+    using Environment.ConnectionProviders;
+    using Environment.ConnectionProviders.Rabbit;
+    using Environment.ConnectionProviders.Redis;
 
     using Microsoft.Extensions.Configuration;
 

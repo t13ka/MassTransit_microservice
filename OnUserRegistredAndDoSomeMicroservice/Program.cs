@@ -3,7 +3,8 @@
     using System;
 
     using Core;
-    using Core.ConnectionProviders.Rabbit;
+
+    using Environment.ConnectionProviders.Rabbit;
 
     class Program
     {

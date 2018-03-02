@@ -24,6 +24,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Common\Abstractions.csproj" />
     <ProjectReference Include="..\Contracts\Contracts.csproj" />
+    <ProjectReference Include="..\Environment\Environment.csproj" />
     <ProjectReference Include="..\MassTransitCore\Core.csproj" />
   </ItemGroup>
 

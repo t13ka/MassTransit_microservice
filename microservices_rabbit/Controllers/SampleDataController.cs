@@ -3,7 +3,12 @@ namespace Web.Controllers
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Threading.Tasks;
 
+    using Abstractions.Messages.Command;
+    using Abstractions.Messages.Command.Responses;
+
+    using Contracts.Commands;
     using Contracts.Events;
 
     using MassTransit;
@@ -13,20 +18,24 @@ namespace Web.Controllers
     [Route("api/[controller]")]
     public class SampleDataController : Controller
     {
-        public SampleDataController(IBusControl bus)
+        private readonly IRequestClient<IGetSomeDataCommand, IGetSomeDataCommandResponse> _getSomeDataClient;
+
+        private readonly IBusControl _bus;
+
+        public SampleDataController(IBusControl bus, IRequestClient<IGetSomeDataCommand, IGetSomeDataCommandResponse> getSomeDataClient)
         {
-            bus.Publish(new UserRegistredEvent { Name = "test test" });
+            _bus = bus;
+            _getSomeDataClient = getSomeDataClient;
         }
 
-        private static string[] Summaries = new[]
-                                                {
-                                                    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy",
-                                                    "Hot", "Sweltering", "Scorching"
-                                                };
 
         [HttpGet("[action]")]
-        public IEnumerable<WeatherForecast> WeatherForecasts()
+        public async Task<IEnumerable<WeatherForecast>> WeatherForecasts()
         {
+            var result = await _getSomeDataClient.Request(new GetSomeDataCommand { SomeParam = "some parameters" });
+
+            await _bus.Publish(new UserRegistredEvent { Name = $"name={Guid.NewGuid()}" });
+
             var rng = new Random();
             return Enumerable.Range(1, 5)
                 .Select(
@@ -34,7 +43,7 @@ namespace Web.Controllers
                                  {
                                      DateFormatted = DateTime.Now.AddDays(index).ToString("d"),
                                      TemperatureC = rng.Next(-20, 55),
-                                     Summary = Summaries[rng.Next(Summaries.Length)]
+                                     Summary = result.Summaries[rng.Next(result.Summaries.Length)]
                                  });
         }
 

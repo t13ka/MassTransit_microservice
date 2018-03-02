@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Common\Abstractions.csproj" />
+    <ProjectReference Include="..\Environment\Environment.csproj" />
   </ItemGroup>
 
 </Project>

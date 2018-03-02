@@ -4,7 +4,7 @@
 
     using Abstractions;
 
-    using Core.ConnectionProviders;
+    using Environment.ConnectionProviders;
 
     using MassTransit;
 

@@ -1,4 +1,4 @@
-﻿namespace Core.ConnectionProviders
+﻿namespace Environment.ConnectionProviders
 {
     public interface IRedisConnectionProvider
     {

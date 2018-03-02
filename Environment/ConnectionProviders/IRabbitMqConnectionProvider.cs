@@ -1,4 +1,4 @@
-﻿namespace Core.ConnectionProviders
+﻿namespace Environment.ConnectionProviders
 {
     using System;
 

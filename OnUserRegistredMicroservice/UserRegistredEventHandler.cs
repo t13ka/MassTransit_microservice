@@ -8,6 +8,8 @@
 
     using Core;
 
+    using Environment;
+
     using MassTransit;
 
     public class UserRegistredEventHandler : BaseBusHandler, IConsumer<IUserRegistredEvent>

@@ -1,4 +1,4 @@
-﻿namespace Core.ConnectionProviders.Rabbit
+﻿namespace Environment.ConnectionProviders.Rabbit
 {
     using System;
 
