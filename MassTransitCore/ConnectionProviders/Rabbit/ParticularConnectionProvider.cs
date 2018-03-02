@@ -1,4 +1,4 @@
-﻿namespace MassTransitCore.ConnectionProviders
+﻿namespace MassTransitCore.ConnectionProviders.Rabbit
 {
     using System;
 
