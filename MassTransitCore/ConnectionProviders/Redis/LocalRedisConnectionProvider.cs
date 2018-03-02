@@ -1,4 +1,4 @@
-﻿namespace MassTransitCore.ConnectionProviders.Redis
+﻿namespace Core.ConnectionProviders.Redis
 {
     public class LocalRedisConnectionProvider : IRedisConnectionProvider
     {

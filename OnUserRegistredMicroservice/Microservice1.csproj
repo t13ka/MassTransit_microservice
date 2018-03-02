@@ -25,7 +25,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Common\Abstractions.csproj" />
     <ProjectReference Include="..\Contracts\Contracts.csproj" />
-    <ProjectReference Include="..\MassTransitCore\MassTransitCore.csproj" />
+    <ProjectReference Include="..\MassTransitCore\Core.csproj" />
   </ItemGroup>
 
 </Project>

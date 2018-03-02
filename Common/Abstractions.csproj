@@ -6,8 +6,4 @@
     <RootNamespace>Abstractions</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="MassTransit.RabbitMQ" Version="4.0.1" />
-  </ItemGroup>
-
 </Project>

@@ -1,12 +1,12 @@
-﻿namespace OnUserRegistredAndDoSomeMicroservice
+﻿namespace Microservice2
 {
     using System.Threading.Tasks;
 
     using Abstractions.Messages.Command;
 
-    using MassTransit;
+    using Core;
 
-    using MassTransitCore;
+    using MassTransit;
 
     public class SendEmailsCommandHandler : BaseBusHandler, IConsumer<ISendEmailsCommand>
     {

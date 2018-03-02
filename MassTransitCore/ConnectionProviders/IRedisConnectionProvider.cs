@@ -1,4 +1,4 @@
-﻿namespace MassTransitCore.ConnectionProviders
+﻿namespace Core.ConnectionProviders
 {
     public interface IRedisConnectionProvider
     {

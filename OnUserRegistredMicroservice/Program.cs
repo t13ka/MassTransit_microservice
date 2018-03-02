@@ -1,11 +1,12 @@
-﻿using System;
-
-namespace OnUserRegistredMicroservice
+﻿namespace Microservice1
 {
+    using System;
     using System.IO;
 
-    using MassTransitCore;
-    using MassTransitCore.ConnectionProviders;
+    using Core;
+    using Core.ConnectionProviders;
+    using Core.ConnectionProviders.Rabbit;
+    using Core.ConnectionProviders.Redis;
 
     using Microsoft.Extensions.Configuration;
 
@@ -25,8 +26,11 @@ namespace OnUserRegistredMicroservice
 
             handlersDirector.StartHandling();
 
-            var test = new RedisCache();
-            test.Test();
+            var cache = new Cache(new LocalRedisConnectionProvider());
+
+            cache.Set("einstein", "albert");
+
+            var test = cache.Get("einstein");
             while (true)
             {
                 Console.ReadKey();

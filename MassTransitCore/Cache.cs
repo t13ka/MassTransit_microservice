@@ -1,8 +1,8 @@
-﻿namespace MassTransitCore
+﻿namespace Core
 {
     using Abstractions;
 
-    using MassTransitCore.ConnectionProviders;
+    using Core.ConnectionProviders;
 
     using StackExchange.Redis;
 

@@ -1,11 +1,9 @@
-﻿using System;
-
-namespace OnUserRegistredAndDoSomeMicroservice
+﻿namespace Microservice2
 {
-    using System.IO;
+    using System;
 
-    using MassTransitCore;
-    using MassTransitCore.ConnectionProviders;
+    using Core;
+    using Core.ConnectionProviders.Rabbit;
 
     class Program
     {

@@ -1,4 +1,4 @@
-﻿namespace NetCoreUtils
+﻿namespace Core
 {
     public enum KnownServicesTypes
     {

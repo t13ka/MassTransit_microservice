@@ -1,4 +1,4 @@
-﻿namespace MassTransitCore
+﻿namespace Core
 {
     using System;
     using System.Collections.Generic;

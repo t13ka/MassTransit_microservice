@@ -1,14 +1,14 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
-using Microsoft.AspNetCore.Mvc;
-
-namespace microservices_rabbit.Controllers
+namespace Web.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
     using Contracts.Events;
 
     using MassTransit;
+
+    using Microsoft.AspNetCore.Mvc;
 
     [Route("api/[controller]")]
     public class SampleDataController : Controller

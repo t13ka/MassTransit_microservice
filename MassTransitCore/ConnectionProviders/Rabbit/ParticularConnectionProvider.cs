@@ -1,8 +1,6 @@
-﻿namespace MassTransitCore.ConnectionProviders.Rabbit
+﻿namespace Core.ConnectionProviders.Rabbit
 {
     using System;
-
-    using NetCoreUtils;
 
     public class ParticularConnectionProvider : IRabbitMqConnectionProvider
     {

@@ -1,9 +1,9 @@
-using System.Diagnostics;
-
-using Microsoft.AspNetCore.Mvc;
-
-namespace microservices_rabbit.Controllers
+namespace Web.Controllers
 {
+    using System.Diagnostics;
+
+    using Microsoft.AspNetCore.Mvc;
+
     public class HomeController : Controller
     {
         public IActionResult Index()

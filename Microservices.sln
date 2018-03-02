@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "microservices_rabbit", "microservices_rabbit\microservices_rabbit.csproj", "{D446FC80-E465-4BC6-9C52-7FF56BE09AB6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web", "microservices_rabbit\Web.csproj", "{D446FC80-E465-4BC6-9C52-7FF56BE09AB6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Abstractions", "Common\Abstractions.csproj", "{07E916E6-807A-44A8-9F67-4DF4228DA4E9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnUserRegistredMicroservice", "OnUserRegistredMicroservice\OnUserRegistredMicroservice.csproj", "{B48E714F-D593-4613-B1DA-71001053B72F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservice1", "OnUserRegistredMicroservice\Microservice1.csproj", "{B48E714F-D593-4613-B1DA-71001053B72F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MassTransitCore", "MassTransitCore\MassTransitCore.csproj", "{0F4DB362-4E1F-4CA4-9ACF-4AB5F4888F16}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "MassTransitCore\Core.csproj", "{0F4DB362-4E1F-4CA4-9ACF-4AB5F4888F16}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contracts", "Contracts\Contracts.csproj", "{7F2CC661-C69F-4510-811A-BF44AA923C28}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnUserRegistredAndDoSomeMicroservice", "OnUserRegistredAndDoSomeMicroservice\OnUserRegistredAndDoSomeMicroservice.csproj", "{CE3C95DD-23DF-4C23-AA5C-576698ADA3C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microservice2", "OnUserRegistredAndDoSomeMicroservice\Microservice2.csproj", "{CE3C95DD-23DF-4C23-AA5C-576698ADA3C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

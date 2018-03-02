@@ -1,10 +1,8 @@
-﻿namespace MassTransitCore.ConnectionProviders.Rabbit
+﻿namespace Core.ConnectionProviders.Rabbit
 {
     using System;
 
     using Microsoft.Extensions.Configuration;
-
-    using NetCoreUtils;
 
     public class LocalConnectionProvider : IRabbitMqConnectionProvider
     {
@@ -29,7 +27,7 @@
         {
             var service = _configuration[serviceType.ToString()];
 
-            return new Uri($"{UriString}{service}");
+            return new Uri($"{UriString}/{service}");
         }
     }
 }

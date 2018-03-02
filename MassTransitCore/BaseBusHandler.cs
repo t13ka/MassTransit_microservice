@@ -1,4 +1,4 @@
-﻿namespace MassTransitCore
+﻿namespace Core
 {
     using Abstractions;
 

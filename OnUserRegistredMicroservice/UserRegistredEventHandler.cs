@@ -1,4 +1,4 @@
-﻿namespace OnUserRegistredMicroservice
+﻿namespace Microservice1
 {
     using System.Threading.Tasks;
 
@@ -6,11 +6,9 @@
 
     using Contracts.Commands;
 
+    using Core;
+
     using MassTransit;
-
-    using MassTransitCore;
-
-    using NetCoreUtils;
 
     public class UserRegistredEventHandler : BaseBusHandler, IConsumer<IUserRegistredEvent>
     {

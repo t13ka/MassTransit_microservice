@@ -1,8 +1,6 @@
-﻿namespace MassTransitCore.ConnectionProviders
+﻿namespace Core.ConnectionProviders
 {
     using System;
-
-    using NetCoreUtils;
 
     public interface IRabbitMqConnectionProvider
     {

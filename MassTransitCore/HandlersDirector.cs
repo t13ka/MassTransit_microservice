@@ -1,12 +1,12 @@
-﻿namespace MassTransitCore
+﻿namespace Core
 {
     using System;
 
     using Abstractions;
 
-    using MassTransit;
+    using Core.ConnectionProviders;
 
-    using MassTransitCore.ConnectionProviders;
+    using MassTransit;
 
     public class HandlersDirector : IHandlersDirector
     {
